@@ -1,0 +1,16 @@
+module.exports = function (api) {
+    api.cache(true);
+
+    const presets = [
+        ["@babel/env", { "modules": false }],
+        "@vue/babel-preset-jsx"
+    ];
+    const plugins = [
+        "@babel/transform-runtime"
+    ];
+
+    return {
+        presets,
+        plugins
+    };
+}
