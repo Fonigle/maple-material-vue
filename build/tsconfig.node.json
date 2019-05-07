@@ -1,0 +1,24 @@
+/**
+ * config for node-ts
+ */
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "isolatedModules": true,
+        "target": "es5",
+        "strictNullChecks": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "inlineSources": false,
+        "lib": [
+            "es2015"
+        ],
+    },
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ],
+}
