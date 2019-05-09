@@ -2,10 +2,15 @@
     <button ref="button"
             :class="buttonClassName"
             v-on="events">
+        <i v-if="icon"
+           :class="['mdc-button__icon', icon]"
+           aria-hidden="true"></i>
         <span class="mdc-button__label">
             <template v-if="label">{{label}}</template>
             <slot v-else></slot>
         </span>
+        <i v-if="trailingIcon"
+           :class="['mdc-button__icon', trailingIcon]"></i>
     </button>
 </template>
 <script lang="ts">
@@ -24,7 +29,7 @@
     @Component
     export default class MdcButton extends Mixins(rippleFactory('button')) {
         /**
-         * label to display on button.
+         * label display on button.
          *
          * 按钮文字
          * @type {string}
@@ -48,6 +53,44 @@
         readonly type?: 'raised' | 'unelevated' | 'outlined';
 
         /**
+         * control if the button is slightly smaller.
+         *
+         * 小号按钮
+         * @type {boolean}
+         * @memberof MdcButton
+         */
+        @Prop({
+            type: Boolean,
+            default: false
+        })
+        readonly dense?: boolean;
+
+
+        /**
+         * icon display before label text.
+         *
+         * 在标签文字前展示的图标
+         * @type {string}
+         * @memberof MdcButton
+         */
+        @Prop({
+            type: String
+        })
+        readonly icon?: string;
+
+        /**
+         * icon display after label text.
+         *
+         * 在标签文字后展示的图标
+         * @type {string}
+         * @memberof MdcButton
+         */
+        @Prop({
+            type: String
+        })
+        readonly trailingIcon?: string;
+
+        /**
          * className list of root element.
          *
          * 组件根元素类名
@@ -58,6 +101,10 @@
             const list = ['mdc-button'];
             if (this.type) {
                 list.push(`mdc-button--${this.type}`);
+            }
+
+            if (this.dense) {
+                list.push('mdc-button--dense');
             }
 
             return list.join(' ');
