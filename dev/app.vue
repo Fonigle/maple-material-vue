@@ -1,12 +1,16 @@
 <template>
     <div class="app">
-        <mdc-button type="unelevated"
+        <!-- <mdc-button type="unelevated"
                     icon="mpi-heart"
                     @click="handleButtonClick">确定</mdc-button>
         <mdc-button type="unelevated"
                     @click="handleButtonClick"
                     trailing-icon="mpi-heart"
-                    dense>确定</mdc-button>
+                    dense>确定</mdc-button> -->
+        <mdc-fab trailing-icon="mpi-heart"
+                 mini
+                 extended
+                 label="Test"></mdc-fab>
         <mdc-icon-button-toggle v-model="test">
             <i class="mdc-icon-button__icon mdc-icon-button__icon--on mpi-heart"></i>
             <i class="mdc-icon-button__icon mpi-heart-outline"></i>

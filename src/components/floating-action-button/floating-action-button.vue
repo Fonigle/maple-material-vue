@@ -2,9 +2,16 @@
     <button ref="fab"
             :class="fabClassName"
             v-on="events">
-        <i class="mdc-fab__icon"></i>
+        <i v-if="icon"
+           :class="['mdc-fab__icon', icon]"></i>
         <span v-if="extended"
-              class="mdc-fab__label">{{label}}</span>
+              class="mdc-fab__label">
+            <template v-if="label">{{label}}</template>
+            <slot v-else
+                  name="label"></slot>
+        </span>
+        <i v-if="trailingIcon"
+           :class="['mdc-fab__icon', trailingIcon]"></i>
     </button>
 </template>
 <script lang="ts">
@@ -52,6 +59,42 @@
         readonly extended!: boolean;
 
         /**
+         * className of icon display on fab.
+         *
+         * 显示在浮动按钮上的图标的类名
+         * @type {string}
+         * @memberof MdcFab
+         */
+        @Prop({
+            type: String,
+        })
+        readonly icon!: string;
+
+        /**
+         * className of icon display after fab label.
+         *
+         * 后置图标的类名
+         * @type {string}
+         * @memberof MdcFab
+         */
+        @Prop({
+            type: String,
+        })
+        readonly trailingIcon!: string;
+
+        /**
+         * label to display on button.
+         *
+         * 按钮文字
+         * @type {string}
+         * @memberof MdcFab
+         */
+        @Prop({
+            type: String
+        })
+        readonly label?: string;
+
+        /**
          * control if fab is exited.
          * - set 'true' to make it exited.
          * - with animation when toggle status.
@@ -67,18 +110,6 @@
             default: false
         })
         readonly exited!: boolean;
-
-        /**
-         * label to display on button.
-         *
-         * 按钮文字
-         * @type {string}
-         * @memberof MdcFab
-         */
-        @Prop({
-            type: String
-        })
-        readonly label?: string;
 
         /**
          * className list of root element.
