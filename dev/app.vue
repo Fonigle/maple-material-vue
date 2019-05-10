@@ -17,7 +17,12 @@
         </mdc-icon-button-toggle>
         <button @click="test=!test">try</button> -->
         <mdc-radio v-model="test"
+                   name="t"
                    value="1">1</mdc-radio>
+        <mdc-radio v-model="test"
+                   name="t"
+                   value="2">2</mdc-radio>
+        {{test}}
         <!-- <mdc-checkbox v-model="test"
                       value="2">2</mdc-checkbox>
         <mdc-checkbox v-model="test"
@@ -30,7 +35,7 @@
 
     @Component
     export default class MyComponent extends Vue {
-        test = [];
+        test = 1;
 
         handleButtonClick() {
             console.log(1);
