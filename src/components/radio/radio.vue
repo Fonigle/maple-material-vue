@@ -116,7 +116,7 @@
         * @memberof MdcRadio
         */
         get eleCheckbox() {
-            return this.$refs['checkbox'] as Element;
+            return this.$refs['radio'] as Element;
         }
 
         /**
