@@ -23,15 +23,38 @@
     import { MDCFormField } from '@material/form-field';
     import twowayFactory from "mixins/two-way";
 
+    /**
+     * component <mdc-switch>
+     *
+     * <mdc-switch>组件
+     * @export
+     * @class MdcSwitch
+     * @extends {Mixins(twowayFactory<boolean>())}
+     */
     @Component
     export default class MdcSwitch extends Mixins(twowayFactory<boolean>()) {
+        /**
+         * disabled mark
+         * 
+         * 禁用状态标记
+         * @type {boolean}
+         * @memberof MdcSwitch
+         */
         @Prop({
             type: Boolean,
             default: false
         })
-        disabled!: boolean;
+        readonly disabled!: boolean;
 
-        switchInstance: MDCSwitch | null = null;
+        /**
+         * instance of MDCSwitch which initialized when the component mounted.
+         *
+         * 在组件加载时初始化的 MDCSwitch 实例
+         * @private
+         * @type {(MDCSwitch | null)}
+         * @memberof MdcSwitch
+         */
+        private switchInstance: MDCSwitch | null = null;
 
         /**
          * html element of form-filed
@@ -44,11 +67,25 @@
             return this.$refs['form-field'] as Element;
         }
 
+        /**
+         * html element of switch
+         * 
+         * 'switch' HTML元素
+         * @readonly
+         * @memberof MdcSwitch
+         */
         get eleSwitch() {
             return this.$refs['switch'] as Element;
         }
 
-        checkDisabled() {
+        /**
+         * check the disabled status, sync switchInstance.disabled config with it.
+         *
+         * 检查禁用状态，同步实例中相关设置
+         * @private
+         * @memberof MdcSwitch
+         */
+        private checkDisabled() {
             const { disabled } = this;
             if (this.switchInstance) {
                 if (disabled) this.switchInstance.disabled = true;
@@ -56,6 +93,17 @@
             }
         }
 
+        /**
+         * mounted lifecycle.
+         * - initialize MDCSwitch instance.
+         * - initialize formField with it for label styles.
+         *
+         * 生命周期：mounted
+         * - 初始化 MDCSwitch 实例
+         * - 初始化 formField 以调整标签样式
+         * 
+         * @memberof MdcSwitch
+         */
         mounted() {
             this.switchInstance = new MDCSwitch(this.eleSwitch);
             const formField = new MDCFormField(this.eleFormField);
@@ -64,6 +112,15 @@
             this.checkDisabled();
         }
 
+        /**
+         * watcher for currentValue.
+         * - sync switchInstance.checked config with currentValue. (for bind-in value changed outside of the component)
+         *
+         * 监听 currentValue
+         * - 同步 switchInstance.checked 配置项。（用于在组件外部改变绑定值的情况）
+         * @param {boolean} newVal
+         * @memberof MdcSwitch
+         */
         @Watch('currentValue')
         watchCurrentValue(newVal: boolean) {
             if (this.switchInstance) {
@@ -72,6 +129,12 @@
             }
         }
 
+        /**
+         * watcher for disabled.
+         *
+         * 监听 disabled
+         * @memberof MdcSwitch
+         */
         @Watch('disabled')
         watchDisabled() {
             this.checkDisabled();
