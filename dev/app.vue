@@ -16,7 +16,13 @@
             <i class="mdc-icon-button__icon mpi-heart-outline"></i>
         </mdc-icon-button-toggle>
         <button @click="test=!test">try</button> -->
-        <mdc-checkbox></mdc-checkbox>
+        <mdc-checkbox v-model="test"
+                      value="1">1</mdc-checkbox>
+        <mdc-checkbox v-model="test"
+                      value="2">2</mdc-checkbox>
+        <mdc-checkbox v-model="test"
+                      value="3">3</mdc-checkbox>
+
     </div>
 </template>
 <script lang="tsx">
@@ -24,7 +30,7 @@
 
     @Component
     export default class MyComponent extends Vue {
-        test = true;
+        test = [];
 
         handleButtonClick() {
             console.log(1);
