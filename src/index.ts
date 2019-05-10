@@ -7,6 +7,7 @@ import MdcFab from './components/floating-action-button/floating-action-button.v
 import MdcIconButton from './components/icon-button/icon-button.vue';
 import MdcIconButtonToggle from './components/icon-button-toggle/icon-button-toggle.vue';
 import MdcCheckbox from './components/checkbox/checkbox.vue';
+import MdcRadio from './components/radio/radio.vue';
 
 interface MapleMaterialVueConfig {
     prefix?: string
@@ -22,7 +23,7 @@ const MapleMaterialVue: PluginObject<MapleMaterialVueConfig> = {
         Vue.component(`${prefix}-icon-button`, MdcIconButton);
         Vue.component(`${prefix}-icon-button-toggle`, MdcIconButtonToggle);
         Vue.component(`${prefix}-checkbox`, MdcCheckbox);
-
+        Vue.component(`${prefix}-radio`, MdcRadio)
     },
 }
 

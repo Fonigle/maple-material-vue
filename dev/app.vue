@@ -16,12 +16,12 @@
             <i class="mdc-icon-button__icon mpi-heart-outline"></i>
         </mdc-icon-button-toggle>
         <button @click="test=!test">try</button> -->
-        <mdc-checkbox v-model="test"
-                      value="1">1</mdc-checkbox>
-        <mdc-checkbox v-model="test"
+        <mdc-radio v-model="test"
+                   value="1">1</mdc-radio>
+        <!-- <mdc-checkbox v-model="test"
                       value="2">2</mdc-checkbox>
         <mdc-checkbox v-model="test"
-                      value="3">3</mdc-checkbox>
+                      value="3">3</mdc-checkbox> -->
 
     </div>
 </template>
