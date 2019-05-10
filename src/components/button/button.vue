@@ -55,7 +55,7 @@
         /**
          * control if the button is slightly smaller.
          *
-         * 小号按钮
+         * 是否为较小的按钮
          * @type {boolean}
          * @memberof MdcButton
          */
