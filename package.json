@@ -37,7 +37,8 @@
         "@material/fab": "^1.1.1",
         "@material/form-field": "^2.0.0",
         "@material/icon-button": "^1.1.0",
-        "@material/radio": "^2.0.0"
+        "@material/radio": "^2.0.0",
+        "@material/switch": "^2.0.0"
     },
     "devDependencies": {
         "@babel/core": "^7.4.0",

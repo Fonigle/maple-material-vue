@@ -16,18 +16,14 @@
             <i class="mdc-icon-button__icon mpi-heart-outline"></i>
         </mdc-icon-button-toggle>
         <button @click="test=!test">try</button> -->
-        <mdc-radio v-model="test"
-                   name="t"
-                   value="1">1</mdc-radio>
-        <mdc-radio v-model="test"
-                   name="t"
-                   value="2">2</mdc-radio>
-        {{test}}
         <!-- <mdc-checkbox v-model="test"
                       value="2">2</mdc-checkbox>
         <mdc-checkbox v-model="test"
                       value="3">3</mdc-checkbox> -->
-
+        <mdc-switch v-model="test"
+                    :disabled="disabled"></mdc-switch>
+        <button @click="disabled = !disabled">toggle</button>
+        {{test}}
     </div>
 </template>
 <script lang="tsx">
@@ -35,7 +31,9 @@
 
     @Component
     export default class MyComponent extends Vue {
-        test = 1;
+        test = false;
+
+        disabled = true;
 
         handleButtonClick() {
             console.log(1);

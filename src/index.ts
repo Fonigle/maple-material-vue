@@ -8,6 +8,7 @@ import MdcIconButton from './components/icon-button/icon-button.vue';
 import MdcIconButtonToggle from './components/icon-button-toggle/icon-button-toggle.vue';
 import MdcCheckbox from './components/checkbox/checkbox.vue';
 import MdcRadio from './components/radio/radio.vue';
+import MdcSwitch from './components/switch/switch.vue';
 
 interface MapleMaterialVueConfig {
     prefix?: string
@@ -23,7 +24,8 @@ const MapleMaterialVue: PluginObject<MapleMaterialVueConfig> = {
         Vue.component(`${prefix}-icon-button`, MdcIconButton);
         Vue.component(`${prefix}-icon-button-toggle`, MdcIconButtonToggle);
         Vue.component(`${prefix}-checkbox`, MdcCheckbox);
-        Vue.component(`${prefix}-radio`, MdcRadio)
+        Vue.component(`${prefix}-radio`, MdcRadio);
+        Vue.component(`${prefix}-switch`, MdcSwitch)
     },
 }
 
