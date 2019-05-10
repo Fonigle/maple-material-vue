@@ -23,7 +23,7 @@
 </template>
 <script lang="ts">
     import { Vue, Component, Mixins, Prop } from "vue-property-decorator";
-    import twowayFactory from "@/mixins/two-way";
+    import twowayFactory from "mixins/two-way";
     import { MDCFormField } from '@material/form-field';
     import { MDCRadio } from '@material/radio';
 

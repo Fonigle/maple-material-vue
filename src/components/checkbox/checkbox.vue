@@ -29,7 +29,7 @@
     import { Vue, Component, Prop, Mixins } from "vue-property-decorator";
     import { MDCFormField } from '@material/form-field';
     import { MDCCheckbox } from '@material/checkbox';
-    import twowayFactory from "@/mixins/two-way";
+    import twowayFactory from "mixins/two-way";
 
     /**
      * component <mdc-checkbox>
