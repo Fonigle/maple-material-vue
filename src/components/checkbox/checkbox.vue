@@ -6,6 +6,7 @@
             <input type="checkbox"
                    class="mdc-checkbox__native-control"
                    :id="id"
+                   :name="name"
                    :value="value"
                    v-model="currentValue" />
             <div class="mdc-checkbox__background">
@@ -31,9 +32,9 @@
     import twowayFactory from "@/mixins/two-way";
 
     /**
-     * component <mdc-fab>
+     * component <mdc-checkbox>
      *
-     * <mdc-fab>组件
+     * <mdc-checkbox>组件
      * @export
      * @class MdcCheckbox
      * @extends {Mixins(twowayFactory())}
@@ -65,6 +66,18 @@
             default: () => Math.random().toString(36).substr(2)
         })
         id!: string;
+
+        /**
+         * name of the native input control
+         *
+         * 原生input组件的name
+         * @type {string}
+         * @memberof MdcCheckbox
+         */
+        @Prop({
+            type: String
+        })
+        name?: string
 
         /**
          * value of native input control
