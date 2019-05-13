@@ -32,13 +32,13 @@
     "homepage": "https://github.com/Fonigle/maple-material-vue#readme",
     "dependencies": {
         "@babel/runtime": "^7.4.0",
-        "@material/button": "^1.1.1",
-        "@material/checkbox": "^2.1.0",
-        "@material/fab": "^1.1.1",
-        "@material/form-field": "^2.0.0",
-        "@material/icon-button": "^1.1.0",
-        "@material/radio": "^2.0.0",
-        "@material/switch": "^2.0.0"
+        "@material/button": "^2.1.1",
+        "@material/checkbox": "^2.1.1",
+        "@material/fab": "^2.1.1",
+        "@material/form-field": "^2.1.1",
+        "@material/icon-button": "^2.1.1",
+        "@material/radio": "^2.1.1",
+        "@material/switch": "^2.1.1"
     },
     "devDependencies": {
         "@babel/core": "^7.4.0",
