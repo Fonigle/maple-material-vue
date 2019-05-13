@@ -8,7 +8,8 @@
                    :id="id"
                    :name="name"
                    :value="value"
-                   v-model="currentValue" />
+                   v-model="currentValue"
+                   :disabled="disabled" />
             <div class="mdc-checkbox__background">
                 <svg class="mdc-checkbox__checkmark"
                      viewBox="0 0 24 24">
@@ -19,7 +20,8 @@
                 <div class="mdc-checkbox__mixedmark"></div>
             </div>
         </div>
-        <label :for="id">
+        <label :for="id"
+               :class="['mdc-checkbox__label',{'mdc-checkbox__label--disabled':disabled}]">
             <template v-if="label">{{label}}</template>
             <slot v-else></slot>
         </label>
@@ -143,4 +145,10 @@
 <style lang="scss" scoped>
     @import "@material/form-field/mdc-form-field";
     @import "@material/checkbox/mdc-checkbox";
+
+    .mdc-checkbox__label {
+        &.mdc-checkbox__label--disabled {
+            opacity: 0.5;
+        }
+    }
 </style>

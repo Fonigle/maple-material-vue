@@ -15,7 +15,8 @@
                 <div class="mdc-radio__inner-circle"></div>
             </div>
         </div>
-        <label for="radio-1">
+        <label for="radio-1"
+               :class="['mdc-radio__label',{'mdc-radio__label--disabled':disabled}]">
             <template v-if="label">{{label}}</template>
             <slot v-else></slot>
         </label>
@@ -139,4 +140,10 @@
 <style lang="scss" scoped>
     @import "@material/form-field/mdc-form-field";
     @import "@material/radio/mdc-radio";
+
+    .mdc-radio__label {
+        &.mdc-radio__label--disabled {
+            opacity: 0.5;
+        }
+    }
 </style>

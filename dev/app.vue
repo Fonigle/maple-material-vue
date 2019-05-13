@@ -16,11 +16,13 @@
             <i class="mdc-icon-button__icon mpi-heart-outline"></i>
         </mdc-icon-button-toggle>
         <button @click="test=!test">try</button> -->
-        <!-- <mdc-checkbox v-model="test"
-                      value="2">2</mdc-checkbox>
         <mdc-checkbox v-model="test"
-                      value="3">3</mdc-checkbox> -->
-        <mdc-textarea></mdc-textarea>
+                      value="2"
+                      :disabled="disabled">2</mdc-checkbox>
+        <mdc-radio v-model="test"
+                   value="1"
+                   :disabled="disabled">1</mdc-radio>
+        <button @click="disabled=!disabled"></button>
     </div>
 </template>
 <script lang="tsx">
