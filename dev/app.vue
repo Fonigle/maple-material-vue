@@ -20,10 +20,7 @@
                       value="2">2</mdc-checkbox>
         <mdc-checkbox v-model="test"
                       value="3">3</mdc-checkbox> -->
-        <mdc-switch v-model="test"
-                    :disabled="disabled"></mdc-switch>
-        <button @click="disabled = !disabled">toggle</button>
-        {{test}}
+        <mdc-textarea></mdc-textarea>
     </div>
 </template>
 <script lang="tsx">
