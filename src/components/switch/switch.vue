@@ -7,7 +7,7 @@
             <div class="mdc-switch__thumb-underlay">
                 <div class="mdc-switch__thumb">
                     <input type="checkbox"
-                           id="basic-switch"
+                           :id="id"
                            class="mdc-switch__native-control"
                            role="switch"
                            v-model="currentValue">
@@ -15,7 +15,7 @@
             </div>
         </div>
         <label class="mdc-switch__label"
-               for="basic-switch">
+               :for="id">
             <template v-if="label">{{label}}</template>
             <slot v-else></slot>
         </label>
@@ -62,7 +62,19 @@
         })
         readonly label!: string;
 
-
+        /**
+         * id of the native input control
+         *
+         * 原生input组件的id
+         * @type {string}
+         * @memberof MdcRadio
+         */
+        @Prop({
+            type: String,
+            default: () => Math.random().toString(36).substr(2)
+        })
+        id!: string;
+        
         /**
          * instance of MDCSwitch which initialized when the component mounted.
          *
