@@ -14,7 +14,11 @@
                 </div>
             </div>
         </div>
-        <label for="basic-switch">off/on</label>
+        <label class="mdc-switch__label"
+               for="basic-switch">
+            <template v-if="label">{{label}}</template>
+            <slot v-else></slot>
+        </label>
     </div>
 </template>
 <script lang="ts">
@@ -45,6 +49,19 @@
             default: false
         })
         readonly disabled!: boolean;
+
+        /**
+         * content of the label
+         * 
+         * 标签内容
+         * @type {boolean}
+         * @memberof MdcSwitch
+         */
+        @Prop({
+            type: String,
+        })
+        readonly label!: string;
+
 
         /**
          * instance of MDCSwitch which initialized when the component mounted.
@@ -105,9 +122,11 @@
          * @memberof MdcSwitch
          */
         mounted() {
-            this.switchInstance = new MDCSwitch(this.eleSwitch);
-            const formField = new MDCFormField(this.eleFormField);
-            formField.input = this.switchInstance;
+            setTimeout(() => {
+                this.switchInstance = new MDCSwitch(this.eleSwitch);
+                const formField = new MDCFormField(this.eleFormField);
+                formField.input = this.switchInstance;
+            }, 17);
 
             this.checkDisabled();
         }
@@ -144,4 +163,8 @@
 <style lang="scss" scoped>
     @import "@material/form-field/mdc-form-field";
     @import "@material/switch/mdc-switch";
+
+    .mdc-switch {
+        margin: 0 4px 0 24px;
+    }
 </style>
