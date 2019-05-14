@@ -1,6 +1,6 @@
 {
     "name": "maple-material-vue",
-    "version": "0.2.5",
+    "version": "0.2.6",
     "description": "Vue Component Library of Material Design 2",
     "main": "dist/maple-material-vue.js",
     "types": "types/index.d.ts",

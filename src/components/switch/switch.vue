@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <label class="mdc-switch__label"
+        <label :class="['mdc-switch__label', {'mdc-switch__label--disabled': disabled}]"
                :for="id">
             <template v-if="label">{{label}}</template>
             <slot v-else></slot>
@@ -74,7 +74,7 @@
             default: () => Math.random().toString(36).substr(2)
         })
         id!: string;
-        
+
         /**
          * instance of MDCSwitch which initialized when the component mounted.
          *
@@ -138,9 +138,9 @@
                 this.switchInstance = new MDCSwitch(this.eleSwitch);
                 const formField = new MDCFormField(this.eleFormField);
                 formField.input = this.switchInstance;
-            }, 17);
 
-            this.checkDisabled();
+                this.checkDisabled();
+            }, 17);
         }
 
         /**
@@ -178,5 +178,11 @@
 
     .mdc-switch {
         margin: 0 4px 0 24px;
+    }
+
+    .mdc-switch__label {
+        &.mdc-switch__label--disabled {
+            opacity: 0.5;
+        }
     }
 </style>

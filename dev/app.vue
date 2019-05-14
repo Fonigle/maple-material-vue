@@ -22,7 +22,7 @@
         <mdc-radio v-model="test"
                    value="1"
                    :disabled="disabled">1</mdc-radio>
-        <mdc-switch>11111</mdc-switch>
+        <mdc-switch disabled>11111</mdc-switch>
         <button @click="disabled=!disabled"></button>
     </div>
 </template>
