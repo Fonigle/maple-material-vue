@@ -15,7 +15,7 @@
                 <div class="mdc-radio__inner-circle"></div>
             </div>
         </div>
-        <label for="radio-1"
+        <label :for="id"
                :class="['mdc-radio__label',{'mdc-radio__label--disabled':disabled}]">
             <template v-if="label">{{label}}</template>
             <slot v-else></slot>
