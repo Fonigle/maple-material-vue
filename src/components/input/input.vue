@@ -7,7 +7,8 @@
                    class="mdc-text-field__input"
                    :placeholder="(type==='fullwidth' && !noLabel)? placeholder: ''"
                    :disabled="disabled"
-                   :maxlength="maxlength">
+                   :maxlength="maxlength"
+                   v-model="currentValue">
             <div class="mdc-notched-outline"
                  v-if="type==='outlined'">
                 <div class="mdc-notched-outline__leading"></div>
@@ -38,6 +39,7 @@
     import { Vue, Component, Prop, Mixins } from "vue-property-decorator";
     import { MDCTextField } from '@material/textfield';
     import IdMixin from 'mixins/id';
+    import twowayFactory from "@/mixins/two-way";
 
     /**
      * component <mdc-input>
@@ -45,10 +47,10 @@
      * <mdc-input> 组件
      * @export
      * @class MdcInput
-     * @extends {Mixins(IdMixin)}
+     * @extends {Mixins(twowayFactory(), IdMixin)}
      */
     @Component
-    export default class MdcInput extends Mixins(IdMixin) {
+    export default class MdcInput extends Mixins(twowayFactory(), IdMixin) {
         /**
          * maxlength of the native input control.
          *
