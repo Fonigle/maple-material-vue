@@ -16,14 +16,19 @@
             <i class="mdc-icon-button__icon mpi-heart-outline"></i>
         </mdc-icon-button-toggle>
         <button @click="test=!test">try</button> -->
-        <mdc-checkbox v-model="test"
-                      value="2"
-                      :disabled="disabled">2</mdc-checkbox>
-        <mdc-radio v-model="test"
-                   value="1"
-                   :disabled="disabled">1</mdc-radio>
-        <mdc-switch disabled>11111</mdc-switch>
-        <button @click="disabled=!disabled"></button>
+        <mdc-input type="outlined"
+                   placeholder="测试"
+                   :maxlength="15"
+                   counter
+                   disabled
+                   v-model="input"></mdc-input>
+        {{input}}
+        <mdc-textarea type="outlined"
+                      placeholder="测试"
+                      :maxlength="140"
+                      v-model="textarea"></mdc-textarea>
+        {{textarea}}
+        <button @click="disabled= !disabled"></button>
     </div>
 </template>
 <script lang="tsx">
@@ -34,6 +39,10 @@
         test = false;
 
         disabled = true;
+
+        input = '1111';
+
+        textarea = '22222';
 
         handleButtonClick() {
             console.log(1);

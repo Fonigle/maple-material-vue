@@ -174,7 +174,9 @@
          * @memberof MdcInput
          */
         mounted() {
-            new MDCTextField(this.elementTextField);
+            setTimeout(() => {
+                new MDCTextField(this.elementTextField);
+            }, 51);
         }
     }
 </script>
