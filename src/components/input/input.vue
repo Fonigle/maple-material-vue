@@ -94,7 +94,7 @@
          * 
          * 禁用状态标记
          * @type {boolean}
-         * @memberof MdcSwitch
+         * @memberof MdcInput
          */
         @Prop({
             type: Boolean,
