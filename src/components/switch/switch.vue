@@ -26,7 +26,7 @@
     import { MDCSwitch } from '@material/switch';
     import { MDCFormField } from '@material/form-field';
     import twowayFactory from "mixins/two-way";
-    import IdMixin from "@/mixins/id";
+    import IdMixin from "mixins/id";
 
     /**
      * component <mdc-switch>

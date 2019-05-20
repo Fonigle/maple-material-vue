@@ -33,7 +33,7 @@
     import { MDCCheckbox } from '@material/checkbox';
     
     import twowayFactory from "mixins/two-way";
-    import IdMixin from "@/mixins/id";
+    import IdMixin from "mixins/id";
 
     /**
      * component <mdc-checkbox>

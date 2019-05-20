@@ -27,7 +27,7 @@
     import twowayFactory from "mixins/two-way";
     import { MDCFormField } from '@material/form-field';
     import { MDCRadio } from '@material/radio';
-    import IdMixin from "@/mixins/id";
+    import IdMixin from "mixins/id";
 
     /**
      * component <mdc-radio>
