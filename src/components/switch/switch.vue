@@ -34,7 +34,7 @@
      * <mdc-switch>组件
      * @export
      * @class MdcSwitch
-     * @extends {Mixins(twowayFactory<boolean>())}
+     * @extends {Mixins(twowayFactory<boolean>(), IdMixin)}
      */
     @Component
     export default class MdcSwitch extends Mixins(twowayFactory<boolean>(), IdMixin) {

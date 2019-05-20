@@ -35,7 +35,7 @@
      * <mdc-radio>组件
      * @export
      * @class MdcRadio
-     * @extends {Mixins(twowayFactory())}
+     * @extends {Mixins(twowayFactory(), IdMixin)}
      */
     @Component
     export default class MdcRadio extends Mixins(twowayFactory(), IdMixin) {
