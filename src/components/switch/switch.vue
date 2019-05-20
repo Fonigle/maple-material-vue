@@ -26,6 +26,7 @@
     import { MDCSwitch } from '@material/switch';
     import { MDCFormField } from '@material/form-field';
     import twowayFactory from "mixins/two-way";
+    import IdMixin from "@/mixins/id";
 
     /**
      * component <mdc-switch>
@@ -36,7 +37,7 @@
      * @extends {Mixins(twowayFactory<boolean>())}
      */
     @Component
-    export default class MdcSwitch extends Mixins(twowayFactory<boolean>()) {
+    export default class MdcSwitch extends Mixins(twowayFactory<boolean>(), IdMixin) {
         /**
          * disabled mark
          * 
@@ -61,19 +62,6 @@
             type: String,
         })
         readonly label!: string;
-
-        /**
-         * id of the native input control
-         *
-         * 原生input组件的id
-         * @type {string}
-         * @memberof MdcRadio
-         */
-        @Prop({
-            type: String,
-            default: () => Math.random().toString(36).substr(2)
-        })
-        id!: string;
 
         /**
          * instance of MDCSwitch which initialized when the component mounted.

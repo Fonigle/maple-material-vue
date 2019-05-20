@@ -27,6 +27,7 @@
     import twowayFactory from "mixins/two-way";
     import { MDCFormField } from '@material/form-field';
     import { MDCRadio } from '@material/radio';
+    import IdMixin from "@/mixins/id";
 
     /**
      * component <mdc-radio>
@@ -37,7 +38,7 @@
      * @extends {Mixins(twowayFactory())}
      */
     @Component
-    export default class MdcRadio extends Mixins(twowayFactory()) {
+    export default class MdcRadio extends Mixins(twowayFactory(), IdMixin) {
         /**
          * disabled mark
          *
@@ -50,19 +51,6 @@
             default: false
         })
         disabled!: boolean;
-
-        /**
-         * id of the native input control
-         *
-         * 原生input组件的id
-         * @type {string}
-         * @memberof MdcRadio
-         */
-        @Prop({
-            type: String,
-            default: () => Math.random().toString(36).substr(2)
-        })
-        id!: string;
 
         /**
          * name of the native input control

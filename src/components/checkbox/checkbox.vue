@@ -31,7 +31,9 @@
     import { Vue, Component, Prop, Mixins } from "vue-property-decorator";
     import { MDCFormField } from '@material/form-field';
     import { MDCCheckbox } from '@material/checkbox';
+    
     import twowayFactory from "mixins/two-way";
+    import IdMixin from "@/mixins/id";
 
     /**
      * component <mdc-checkbox>
@@ -42,7 +44,7 @@
      * @extends {Mixins(twowayFactory())}
      */
     @Component
-    export default class MdcCheckbox extends Mixins(twowayFactory()) {
+    export default class MdcCheckbox extends Mixins(twowayFactory(), IdMixin) {
         /**
          * disabled mark
          *
@@ -55,19 +57,6 @@
             default: false
         })
         disabled!: boolean;
-
-        /**
-         * id of the native input control
-         *
-         * 原生input组件的id
-         * @type {string}
-         * @memberof MdcCheckbox
-         */
-        @Prop({
-            type: String,
-            default: () => Math.random().toString(36).substr(2)
-        })
-        id!: string;
 
         /**
          * name of the native input control
