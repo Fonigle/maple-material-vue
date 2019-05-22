@@ -53,4 +53,8 @@
     body {
         background: #fff !important;
     }
+
+    :root {
+        --mdc-theme-primary: #2196f3;
+    }
 </style>

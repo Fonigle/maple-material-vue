@@ -219,9 +219,12 @@
          * @memberof MdcInput
          */
         mounted() {
-            if (this.currentValue.toString().length) {
-                this.preFilled = true;
+            try {
+                if (this.currentValue.toString().length) {
+                    this.preFilled = true;
+                }
             }
+            catch{ }
 
             setTimeout(() => {
                 new MDCTextField(this.elementTextField);
@@ -236,9 +239,15 @@
         display: inline-flex;
         flex-direction: column;
         vertical-align: top;
+    }
 
-        &.mdc-text-field__wrapper--fullwidth {
-            width: 100%;
+    .mdc-text-field__wrapper--fullwidth {
+        width: 100%;
+    }
+
+    .mdc-text-field--focused:not(.mdc-text-field--disabled) {
+        .mdc-floating-label {
+            color: var(--mdc-theme-primary, #6200ee) !important;
         }
     }
 </style>

@@ -196,9 +196,12 @@
          * @memberof MdcTextarea
          */
         mounted() {
-            if (this.currentValue.toString().length) {
-                this.preFilled = true;
+            try {
+                if (this.currentValue.toString().length) {
+                    this.preFilled = true;
+                }
             }
+            catch{ }
 
             setTimeout(() => {
                 new MDCTextField(this.eleTextField);
@@ -228,6 +231,12 @@
             &.mdc-text-field__input--resize-both {
                 resize: both;
             }
+        }
+    }
+
+    .mdc-text-field--focused:not(.mdc-text-field--disabled) {
+        .mdc-floating-label {
+            color: var(--mdc-theme-primary, #6200ee) !important;
         }
     }
 </style>
