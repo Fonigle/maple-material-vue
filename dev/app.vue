@@ -20,8 +20,8 @@
                    placeholder="测试"
                    :maxlength="15"
                    counter
-                   disabled
-                   v-model="input"></mdc-input>
+                   v-model="input"
+                   trailing-icon="mpi-heart"></mdc-input>
         {{input}}
         <mdc-textarea type="outlined"
                       placeholder="测试"
