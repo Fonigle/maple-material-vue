@@ -1,7 +1,11 @@
 <template>
-    <div class="mdc-text-field__wrapper">
+    <div :class="['mdc-text-field__wrapper', {'mdc-text-field__wrapper--fullwidth': type==='fullwidth'}]">
         <div ref="text-field"
              :class="inputClassName">
+            <i v-if="leadingIcon && type!=='fullwidth'"
+               :class="['mdc-text-field__icon', leadingIcon]"
+               tabindex="-1"
+               role="button"></i>
             <input type="text"
                    :id="id"
                    class="mdc-text-field__input"
@@ -9,19 +13,27 @@
                    :disabled="disabled"
                    :maxlength="maxlength"
                    v-model="currentValue">
+            <i v-if="trailingIcon && type==='outlined'"
+               :class="['mdc-text-field__icon', trailingIcon]"
+               tabindex="-1"
+               role="button"></i>
             <div class="mdc-notched-outline"
                  v-if="type==='outlined'">
                 <div class="mdc-notched-outline__leading"></div>
                 <div class="mdc-notched-outline__notch"
                      v-if="!noLabel">
                     <label :for="id"
-                           class="mdc-floating-label">{{placeholder}}</label>
+                           :class="['mdc-floating-label', {'mdc-floating-label--float-above': preFilled}]">{{placeholder}}</label>
                 </div>
                 <div class="mdc-notched-outline__trailing"></div>
             </div>
-            <label class="mdc-floating-label"
+            <label :class="['mdc-floating-label', {'mdc-floating-label--float-above': preFilled}]"
                    :for="id"
                    v-else-if="type!=='fullwidth' && !noLabel">{{placeholder}}</label>
+            <i v-if="trailingIcon && type==='default'"
+               :class="['mdc-text-field__icon', trailingIcon]"
+               tabindex="-1"
+               role="button"></i>
             <div class="mdc-line-ripple"
                  v-if="type!=='outlined'">
             </div>
@@ -61,7 +73,7 @@
         @Prop({
             type: Number
         })
-        readonly maxlength?: number
+        readonly maxlength?: number;
 
         /**
          * control if it's without label.
@@ -87,7 +99,7 @@
             type: String,
             default: 'default'
         })
-        readonly type!: 'default' | 'fullwidth' | 'outlined'
+        readonly type!: 'default' | 'fullwidth' | 'outlined';
 
         /**
          * disabled mark.
@@ -110,7 +122,7 @@
          * @memberof MdcInput
          */
         @Prop()
-        readonly helper?: string
+        readonly helper?: string;
 
         /**
          * show character counter.
@@ -126,6 +138,26 @@
         readonly counter!: boolean;
 
         /**
+         * className of icon display at the leading of input.
+         *
+         * 显示在标签上的内容 或 传递给原生input控件的placeholder属性
+         * @type {string}
+         * @memberof MdcInput
+         */
+        @Prop()
+        readonly leadingIcon?: string;
+
+        /**
+         * className of icon display at the trailing of input.
+         *
+         * 显示在标签上的内容 或 传递给原生input控件的placeholder属性
+         * @type {string}
+         * @memberof MdcInput
+         */
+        @Prop()
+        readonly trailingIcon?: string;
+
+        /**
          * content to display on label or pass it to native input control.
          *
          * 显示在标签上的内容 或 传递给原生input控件的placeholder属性
@@ -134,6 +166,16 @@
          */
         @Prop()
         readonly placeholder?: string;
+
+
+        /**
+         * filled when init.
+         *
+         * 初始化时已有填充值。
+         * @private
+         * @memberof MdcInput
+         */
+        private preFilled = false;
 
         /**
          * className list of root element.
@@ -150,6 +192,9 @@
             this.noLabel && result.push('mdc-text-field--no-label');
 
             this.disabled && result.push('mdc-text-field--disabled');
+
+            this.leadingIcon && result.push('mdc-text-field--with-leading-icon');
+            this.trailingIcon && result.push('mdc-text-field--with-trailing-icon');
 
             return result;
         }
@@ -174,9 +219,14 @@
          * @memberof MdcInput
          */
         mounted() {
+            if (this.currentValue.toString().length) {
+                this.preFilled = true;
+            }
+
             setTimeout(() => {
                 new MDCTextField(this.elementTextField);
             }, 51);
+
         }
     }
 </script>
@@ -186,5 +236,9 @@
         display: inline-flex;
         flex-direction: column;
         vertical-align: top;
+
+        &.mdc-text-field__wrapper--fullwidth {
+            width: 100%;
+        }
     }
 </style>
