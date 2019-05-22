@@ -15,7 +15,7 @@
             <div class="mdc-notched-outline__notch"
                  v-if="!noLabel">
                 <label :for="id"
-                       class="mdc-floating-label">{{placeholder}}</label>
+                       :class="['mdc-floating-label', {'mdc-floating-label--float-above': preFilled}]">{{placeholder}}</label>
             </div>
             <div class="mdc-notched-outline__trailing"></div>
         </div>
@@ -179,6 +179,15 @@
         }
 
         /**
+         * filled when init.
+         *
+         * 初始化时已有填充值。
+         * @private
+         * @memberof MdcInput
+         */
+        private preFilled = false;
+
+        /**
          * mounted lifecycle.
          * - initialize MDCTextField.
          *
@@ -187,6 +196,10 @@
          * @memberof MdcTextarea
          */
         mounted() {
+            if (this.currentValue.toString().length) {
+                this.preFilled = true;
+            }
+
             setTimeout(() => {
                 new MDCTextField(this.eleTextField);
             }, 51);
