@@ -8,7 +8,7 @@ import { Vue, Component, Prop, Model } from 'vue-property-decorator';
  * @template T
  * @returns
  */
-export default function twowayFactory<T>() {
+export default function twowayFactory<T = any>() {
     /**
      * mixin for two-way value binding.
      *
