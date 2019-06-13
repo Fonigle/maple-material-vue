@@ -1,25 +1,9 @@
 <template>
     <div ref="form-field"
          class="mdc-form-field">
-        <div ref="checkbox"
-             class="mdc-checkbox">
-            <input type="checkbox"
-                   class="mdc-checkbox__native-control"
-                   :id="id"
-                   :name="name"
-                   :value="value"
-                   v-model="currentValue"
-                   :disabled="disabled" />
-            <div class="mdc-checkbox__background">
-                <svg class="mdc-checkbox__checkmark"
-                     viewBox="0 0 24 24">
-                    <path class="mdc-checkbox__checkmark-path"
-                          fill="none"
-                          d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                </svg>
-                <div class="mdc-checkbox__mixedmark"></div>
-            </div>
-        </div>
+        <checkbox-core v-bind="{ id, disabled, name, value }"
+                       v-model="currentValue"
+                       @checkbox-core-mounted="handleCoreMounted"></checkbox-core>
         <label :for="id"
                :class="['mdc-checkbox__label',{'mdc-checkbox__label--disabled':disabled}]">
             <template v-if="label">{{label}}</template>
@@ -31,9 +15,11 @@
     import { Vue, Component, Prop, Mixins } from "vue-property-decorator";
     import { MDCFormField } from '@material/form-field';
     import { MDCCheckbox } from '@material/checkbox';
-    
+
     import twowayFactory from "mixins/two-way";
     import IdMixin from "mixins/id";
+
+    import CheckboxCore from './checkbox-core.vue';
 
     /**
      * component <mdc-checkbox>
@@ -43,7 +29,9 @@
      * @class MdcCheckbox
      * @extends {Mixins(twowayFactory())}
      */
-    @Component
+    @Component({
+        components: { CheckboxCore }
+    })
     export default class MdcCheckbox extends Mixins(twowayFactory(), IdMixin) {
         /**
          * disabled mark
@@ -56,7 +44,7 @@
             type: Boolean,
             default: false
         })
-        disabled!: boolean;
+        readonly disabled!: boolean;
 
         /**
          * name of the native input control
@@ -68,7 +56,7 @@
         @Prop({
             type: String
         })
-        name?: string
+        readonly name?: string
 
         /**
          * value of native input control
@@ -78,7 +66,7 @@
          * @memberof MdcCheckbox
          */
         @Prop()
-        value?: any
+        readonly value?: any
 
         /**
          * content of the label
@@ -90,7 +78,7 @@
         @Prop({
             type: String
         })
-        label?: string
+        readonly label?: string
 
         /**
          * html element of form-filed
@@ -99,41 +87,25 @@
          * @readonly
          * @memberof MdcCheckbox
          */
-        get eleFormField() {
-            return this.$refs['form-field'] as Element;
+        get formFieldElement() {
+            return this.$refs['form-field'] as HTMLDivElement;
         }
 
         /**
-        * html element of checkbox
-        *
-        * 'checkbox' HTML元素
-        * @readonly
-        * @memberof MdcCheckbox
-        */
-        get eleCheckbox() {
-            return this.$refs['checkbox'] as Element;
-        }
-
-        /**
-         * mounted lifecycle.
-         * - initialize ripple based on MDCFormField.
+         * handler for 'checkbox-core-mounted' event
          *
-         * 生命周期: mounted.
-         * - 基于MDCFormField初始化点击波纹效果
+         * 'checkbox-core-mounted' 事件处理
+         * @param {MDCRadio} checkbox
          * @memberof MdcCheckbox
          */
-        mounted() {
-            setTimeout(() => {
-                const checkbox = new MDCCheckbox(this.eleCheckbox);
-                const formField = new MDCFormField(this.eleFormField);
-                formField.input = checkbox;
-            }, 34);
+        handleCoreMounted(checkbox: MDCCheckbox) {
+            const formField = new MDCFormField(this.formFieldElement);
+            formField.input = checkbox;
         }
     }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
     @import "@material/form-field/mdc-form-field";
-    @import "@material/checkbox/mdc-checkbox";
 
     .mdc-checkbox__label {
         &.mdc-checkbox__label--disabled {
