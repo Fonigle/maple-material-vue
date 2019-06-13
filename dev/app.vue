@@ -1,34 +1,11 @@
 <template>
     <div class="app">
-        <!-- <mdc-button type="unelevated"
-                    icon="mpi-heart"
-                    @click="handleButtonClick">确定</mdc-button>
-        <mdc-button type="unelevated"
-                    @click="handleButtonClick"
-                    trailing-icon="mpi-heart"
-                    dense>确定</mdc-button> -->
-        <!-- <mdc-fab trailing-icon="mpi-heart"
-                 mini
-                 extended
-                 label="Test"></mdc-fab> -->
-        <!-- <mdc-icon-button-toggle v-model="test">
-            <i class="mdc-icon-button__icon mdc-icon-button__icon--on mpi-heart"></i>
-            <i class="mdc-icon-button__icon mpi-heart-outline"></i>
-        </mdc-icon-button-toggle>
-        <button @click="test=!test">try</button> -->
-        <mdc-input type="outlined"
-                   placeholder="测试"
-                   :maxlength="15"
-                   counter
-                   v-model="input"
-                   trailing-icon="mpi-heart"></mdc-input>
-        {{input}}
-        <mdc-textarea type="outlined"
-                      placeholder="测试"
-                      :maxlength="140"
-                      v-model="textarea"></mdc-textarea>
-        {{textarea}}
-        <button @click="disabled= !disabled"></button>
+        <mdc-list type="checkbox">
+            <mdc-list-item :value="1"
+                           text="111"></mdc-list-item>
+            <mdc-list-item :value="2"
+                           text="222"></mdc-list-item>
+        </mdc-list>
     </div>
 </template>
 <script lang="tsx">
@@ -43,6 +20,10 @@
         input = '1111';
 
         textarea = '22222';
+
+        s = [];
+
+        t = [];
 
         handleButtonClick() {
             console.log(1);
