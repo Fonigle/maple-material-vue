@@ -108,8 +108,10 @@
          * @memberof MdcRadioCore
          */
         mounted() {
-            const radio = new MDCRadio(this.checkboxElement);
-            this.$emit('radio-core-mounted', radio);
+            setTimeout(() => {
+                const radio = new MDCRadio(this.checkboxElement);
+                this.$emit('radio-core-mounted', radio);
+            }, 17);
         }
     }
 </script>
