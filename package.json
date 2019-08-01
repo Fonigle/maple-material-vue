@@ -25,7 +25,7 @@
         "vue"
     ],
     "author": "Fonigle",
-    "license": "Anti-996",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/Fonigle/maple-material-vue/issues"
     },
