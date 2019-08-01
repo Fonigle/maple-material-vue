@@ -1,8 +1,9 @@
 # Browsers that we support
 
-ie >= 9
-edge >= 8
-chrome >= 42
-firefox >= 38
-android >= 42
+edge >= 12
+chrome >= 49
+firefox >= 18
+opera >= 36
+safari >= 10
+android >= 49
 iOS >= 7
