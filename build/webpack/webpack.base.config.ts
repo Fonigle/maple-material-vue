@@ -1,15 +1,12 @@
 /// <reference path="../@types/vue-loader/index.d.ts" />
 
 import * as path from 'path';
-// import * as glob from 'glob';
 import * as VueLoaderPlugin from 'vue-loader/lib/plugin';
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 const mode = process.env.MODE;
-
-//开发环境下不单独提取css
-const styleLoader =
-    mode === "production" ? MiniCssExtractPlugin.loader : "style-loader";
+const isProduction = (mode === "production");
 
 module.exports = {
     output: {
@@ -31,45 +28,55 @@ module.exports = {
         {
             test: /\.js$/,
             loader: "babel-loader",
-            include: [
-                path.resolve("src"),
-                path.resolve("dev"),
-            ]
+            exclude: /node_modules/
         },
         {
-            test: /\.tsx?$/,
+            test: /\.ts$/,
             exclude: /node_modules/,
             use: [
                 "babel-loader",
                 {
                     loader: "ts-loader",
                     options: {
-                        appendTsxSuffixTo: [/\.vue$/]
+                        appendTsSuffixTo: [/\.vue$/],
+                        transpileOnly: true
                     }
                 }
             ]
         },
         {
-            test: /\.css$/,
-            use: [styleLoader, "css-loader"]
+            test: /\.tsx$/,
+            exclude: /node_modules/,
+            use: [
+                "babel-loader",
+                {
+                    loader: "ts-loader",
+                    options: {
+                        appendTsxSuffixTo: [/\.vue$/],
+                        transpileOnly: true
+                    }
+                }
+            ]
         },
         {
-            test: /\.scss$/,
+            test: /\.(sa|sc|c)ss$/,
             use: [
-                styleLoader,
+                {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        hmr: !isProduction,
+                    },
+                },
                 {
                     loader: "css-loader",
                     options: {
-                        sourceMap: true
+                        sourceMap: !isProduction
                     }
                 },
                 {
                     loader: "sass-loader",
                     options: {
-                        sourceMap: true,
-                        // includePaths: glob.sync(
-                        //     path.join(__dirname, '**/node_modules/@material')
-                        // ).map((dir) => path.dirname(dir)),
+                        sourceMap: !isProduction,
                         importer: function (url: string) {
                             if (url.indexOf('@material') === 0) {
                                 const filePath = url.split('@material')[1];
@@ -85,7 +92,7 @@ module.exports = {
                             return { file: url };
                         }
                     }
-                }
+                },
             ]
         },
         {
@@ -93,7 +100,7 @@ module.exports = {
             include: /image/,
             loader: "url-loader",
             query: {
-                limit: 1,
+                limit: 1024,
                 name: "asset/images/[hash:16].[ext]"
             }
         },
@@ -102,16 +109,23 @@ module.exports = {
             include: /icon|font/,
             loader: "url-loader",
             query: {
-                limit: 1,
+                limit: 1024,
                 name: "asset/fonts/[name].[hash:7].[ext]"
             }
-        }
-        ]
+        }]
     },
     performance: {
         hints: false
     },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new ForkTsCheckerWebpackPlugin({
+            async: isProduction,
+            vue: true,
+            // workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+        }),
     ]
 };
