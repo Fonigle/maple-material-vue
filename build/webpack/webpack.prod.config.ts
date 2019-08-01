@@ -3,7 +3,6 @@ import * as merge from 'webpack-merge';
 
 import * as baseCfg from './webpack.base.config';
 
-import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import * as UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import * as OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import * as FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
@@ -21,17 +20,23 @@ module.exports = merge(baseCfg, {
         filename: '[name].js',
         libraryTarget: 'umd'
     },
-    devtool: false,
-    plugins: [
-        new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin({
-            filename: '[name].css'
-        }),
-    ],
     externals: {
         vue: 'vue',
         'vue-class-component': 'vue-class-component'
     },
+    devtool: false,
+    stats: false,
+    plugins: [
+        new CleanWebpackPlugin(),
+        new FriendlyErrorsWebpackPlugin({
+            compilationSuccessInfo: {
+                messages: [
+                    ...buddha
+                ],
+                notes: [],
+            }
+        }),
+    ],
     optimization: {
         splitChunks: false,
         minimizer: [
@@ -45,15 +50,6 @@ module.exports = merge(baseCfg, {
                 cssProcessorOptions: {
                     safe: true
                 },
-            }),
-            new FriendlyErrorsWebpackPlugin({
-                compilationSuccessInfo: {
-                    messages: [
-                        ...buddha
-                    ],
-                    notes: [],
-                },
-                clearConsole: false
             }),
         ]
     }

@@ -7,7 +7,7 @@
     "scripts": {
         "iconfont": "cross-env TS_NODE_PROJECT='build/tsconfig.node.json' ts-node build/iconfont/iconfont-builder.ts",
         "webpack-dev": "cross-env MODE='development' TS_NODE_PROJECT='build/tsconfig.node.json' webpack-dev-server --config build/webpack/webpack.dev.config.ts",
-        "webpack": "cross-env MODE='production' TS_NODE_PROJECT='build/tsconfig.node.json' webpack --config build/webpack/webpack.prod.config.ts --progress --hide-modules --display-entrypoints=false",
+        "webpack": "cross-env MODE='production' TS_NODE_PROJECT='build/tsconfig.node.json' webpack --config build/webpack/webpack.prod.config.ts --progress",
         "start": " npm run iconfont && npm run webpack-dev",
         "dist": "npm run iconfont && npm run webpack"
     },
@@ -65,6 +65,7 @@
         "cross-env": "5.2.0",
         "css-loader": "3.1.0",
         "file-loader": "4.1.0",
+        "fork-ts-checker-webpack-plugin": "^1.4.3",
         "friendly-errors-webpack-plugin": "1.7.0",
         "html-webpack-plugin": "3.2.0",
         "maple-theme": "2.1.0",

@@ -4,8 +4,6 @@ import * as merge from 'webpack-merge';
 
 import * as baseConfig from './webpack.base.config';
 
-import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
-
 import * as HtmlPlugin from 'html-webpack-plugin';
 import * as FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 
@@ -34,6 +32,7 @@ module.exports = merge(baseConfig, {
         open: true,
         historyApiFallback: true,
         quiet: true,
+        overlay: true
     },
     entry: {
         index: [path.resolve("dev/index.ts")]
@@ -44,9 +43,6 @@ module.exports = merge(baseConfig, {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new MiniCssExtractPlugin({
-            filename: '[name].css'
-        }),
         new HtmlPlugin({
             filename: "index.html",
             template: path.resolve("dev/index.html"),
