@@ -25,11 +25,9 @@ export default function twowayFactory<T = any>() {
          * @type {T}
          * @memberof TwoWayMixin
          */
-        @Prop()
         @Model('valueChanged')
-        bindValue!: T;
+        readonly bindValue!: T;
 
-        //----------------------------------------
         /**
          * temporary variable for value operation
          *
@@ -39,37 +37,10 @@ export default function twowayFactory<T = any>() {
         get currentValue() {
             return this.bindValue;
         }
-
         set currentValue(value) {
             this.$emit('valueChanged', value);
         }
-        //----------------------------------------
     }
 
     return TwoWayMixin;
 }
-
-// /**
-//  * mixin for two-way value binding.
-//  *
-//  * mixin: 数据双向绑定
-//  * @export
-//  * @class TwoWay
-//  * @extends {Vue}
-//  */
-// @Component
-// export default class TwoWay extends Vue {
-//     /** bind-in value */
-//     @Prop()
-//     @Model('valueChanged')
-//     bindValue!: any;
-
-//     /** temporary value for operation */
-//     get currentValue() {
-//         return this.bindValue;
-//     }
-
-//     set currentValue(value) {
-//         this.$emit('valueChanged', value);
-//     }
-// }
