@@ -72,6 +72,7 @@
         "mini-css-extract-plugin": "0.8.0",
         "node-sass": "4.12.0",
         "optimize-css-assets-webpack-plugin": "5.0.3",
+        "reflect-metadata": "^0.1.13",
         "sass-loader": "7.1.0",
         "style-loader": "0.23.1",
         "svgtofont": "1.1.19",
