@@ -10,8 +10,6 @@
         "isolatedModules": true,
         "target": "es5",
         "strictNullChecks": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
         "inlineSources": false,
         "lib": [
             "es2015"
