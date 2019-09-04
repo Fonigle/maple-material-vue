@@ -35,9 +35,7 @@
          * @type {string}
          * @memberof MdcButton
          */
-        @Prop({
-            type: String,
-        })
+        @Prop()
         readonly label?: string;
 
         /**
@@ -48,7 +46,9 @@
          * @memberof MdcButton
          */
         @Prop({
-            type: String
+            validator(value) {
+                return ['raised', 'unelevated', 'outlined'].includes(value)
+            }
         })
         readonly type?: 'raised' | 'unelevated' | 'outlined';
 
@@ -73,9 +73,7 @@
          * @type {string}
          * @memberof MdcButton
          */
-        @Prop({
-            type: String
-        })
+        @Prop()
         readonly icon?: string;
 
         /**
@@ -85,9 +83,7 @@
          * @type {string}
          * @memberof MdcButton
          */
-        @Prop({
-            type: String
-        })
+        @Prop()
         readonly trailingIcon?: string;
 
         /**
