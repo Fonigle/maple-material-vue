@@ -25,7 +25,9 @@ export default function twowayFactory<T = any>() {
          * @type {T}
          * @memberof TwoWayMixin
          */
-        @Model('valueChanged')
+        @Model('valueChanged', {
+            type: null
+        })
         readonly bindValue!: T;
 
         /**

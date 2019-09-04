@@ -1,4 +1,4 @@
-import { PropOptions as BasePropOptions, PropType } from 'vue';
+import Vue, { PropOptions as BasePropOptions, PropType } from 'vue';
 import { VueDecorator } from 'vue-class-component';
 import { Constructor } from 'vue-property-decorator';
 
@@ -36,10 +36,12 @@ import { Constructor } from 'vue-property-decorator';
 //
 // Ref https://github.com/kaorun343/vue-property-decorator/issues/213
 declare module 'vue-property-decorator' {
-  type PropOptions<T = any> = Omit<BasePropOptions<T>, 'type'> & {
-    type?: PropType<T> | null;
-  };
-  export function Prop(
-    options?: PropOptions | Constructor[] | Constructor,
-  ): VueDecorator;
+    type PropOptions<T = any> = Omit<BasePropOptions<T>, 'type'> & {
+        type?: PropType<T> | null;
+    };
+    export function Prop(
+        options?: PropOptions | Constructor[] | Constructor,
+    ): VueDecorator;
+
+    export function Model(event?: string, options?: PropOptions | Constructor[] | Constructor): (target: Vue, key: string) => void;
 }
