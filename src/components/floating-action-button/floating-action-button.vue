@@ -1,7 +1,7 @@
 <template>
     <button ref="fab"
             :class="fabClassName"
-            v-on="events">
+            v-on="$listeners">
         <i v-if="icon"
            :class="['mdc-fab__icon', icon]"></i>
         <span v-if="extended"
@@ -134,19 +134,6 @@
             }
 
             return list.join(' ');
-        }
-
-        /**
-         * events list of component.
-         *
-         * 组件事件列表
-         * @readonly
-         * @memberof MdcFab
-         */
-        get events() {
-            return {
-                'click': () => { this.$emit('click') }
-            }
         }
     }
 

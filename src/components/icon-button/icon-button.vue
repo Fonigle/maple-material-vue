@@ -1,7 +1,7 @@
 <template>
     <button ref="icon-button"
             class="mdc-icon-button"
-            v-on="events">
+            v-on="$listeners">
         <i v-if="icon"
            :class="icon"></i>
         <slot v-else></slot>
@@ -32,19 +32,6 @@
             type: String
         })
         readonly icon?: string
-
-        /**
-         * events list of component.
-         *
-         * 组件事件列表
-         * @readonly
-         * @memberof MdcIconButton
-         */
-        get events() {
-            return {
-                'click': () => { this.$emit('click') }
-            }
-        }
     }
 
 </script>

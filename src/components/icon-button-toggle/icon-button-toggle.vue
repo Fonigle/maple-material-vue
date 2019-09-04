@@ -1,7 +1,7 @@
 <template>
     <mdc-icon-button ref="icon-button-toggle"
                      @[toggleEvent].native="handleChange"
-                     v-on="events">
+                     v-on="$listeners">
         <i v-if="iconOn"
            :class="['mdc-icon-button__icon','mdc-icon-button__icon--on', iconOn]"></i>
         <i v-if="iconOff"
@@ -77,19 +77,6 @@
         get elementIconButtonToggle() {
             const componentIconButton = this.$refs['icon-button-toggle'] as MdcIconButton;
             return componentIconButton.$el;
-        }
-
-        /**
-         * events list of component.
-         *
-         * 组件事件列表
-         * @readonly
-         * @memberof MpIconButtonToggle
-         */
-        get events() {
-            return {
-                'click': () => { this.$emit('click') }
-            }
         }
 
         /**
