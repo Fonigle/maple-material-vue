@@ -1,8 +1,6 @@
 ///<reference path="../node_modules/vue-tsx-support/enable-check.d.ts" />
 ///<reference path="../node_modules/vue-tsx-support/options/allow-unknown-props.d.ts" />
 ///<reference path="../node_modules/vue-tsx-support/options/allow-element-unknown-attrs.d.ts" />
-import 'reflect-metadata';
-
 import { PluginObject } from 'vue';
 
 import MdcButton from './components/button/button.vue';
@@ -22,7 +20,6 @@ import MdcListDivider from './components/list/list-divider.vue';
 interface MapleMaterialVueConfig {
     prefix?: string
 }
-
 
 const MapleMaterialVue: PluginObject<MapleMaterialVueConfig> = {
     install(Vue, options) {
