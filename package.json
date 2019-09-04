@@ -8,8 +8,8 @@
         "iconfont": "cross-env TS_NODE_PROJECT='build/tsconfig.node.json' ts-node build/iconfont/iconfont-builder.ts",
         "webpack-dev": "cross-env MODE='development' TS_NODE_PROJECT='build/tsconfig.node.json' webpack-dev-server --config build/webpack/webpack.dev.config.ts",
         "webpack": "cross-env MODE='production' TS_NODE_PROJECT='build/tsconfig.node.json' webpack --config build/webpack/webpack.prod.config.ts --progress",
-        "start": " npm run iconfont && npm run webpack-dev",
-        "dist": "npm run iconfont && npm run webpack"
+        "start": "npm run iconfont && npm run webpack-dev",
+        "dist": "npm run webpack"
     },
     "repository": {
         "type": "git",

@@ -9,38 +9,36 @@ import {
 } from "svgtofont/src/utils";
 
 import * as path from 'path';
-
 import * as fs from 'fs';
 
-const checkDir = () => {
-    return new Promise((resolve) => {
-        fs.exists(path.resolve('./_intermediate'), exists => {
-            if (!exists) {
-                fs.mkdirSync(path.resolve('./_intermediate'));
-                fs.mkdirSync(path.resolve('./_intermediate/iconfonts'));
-                resolve();
+const checkDirExist = (folderpath: string) => {
+    return new Promise((resolve, reject) => {
+        const pathArr = folderpath.split('/');
+
+        let _path = '';
+
+        try {
+            for (let item of pathArr) {
+                _path += `/${item}`;
+                !fs.existsSync(path.resolve(`./${_path}`))
+                    && fs.mkdirSync(path.resolve(`./${_path}`))
             }
-            else {
-                fs.exists(path.resolve('./_intermediate/iconfonts'), exists => {
-                    if (!exists) {
-                        fs.mkdirSync(path.resolve('./_intermediate/iconfonts'));
-                        resolve();
-                    }
-                    else {
-                        resolve();
-                    }
-                })
-            }
-        });
+            resolve();
+        }
+        catch (err) {
+            reject(err);
+        }
     })
 }
 
-checkDir().then(() => {
+const outputPath = 'dev/_intermediate/iconfonts';
+
+checkDirExist(outputPath).then(() => {
     const options = {
-        src: path.resolve('src/assets/icon-svgs'), // svg 图标目录路径
-        dist: path.resolve('_intermediate/iconfonts'), // 输出到指定目录中
+        src: path.resolve('dev/assets/icon-svgs'), // svg 图标目录路径
+        dist: path.resolve('dev/_intermediate/iconfonts'), // 输出到指定目录中
         fontName: 'maple-icon', // 设置字体名称
-        clssaNamePrefix: 'mpi',
+        clssaNamePrefix: 'icon',
         svgicons2svgfont: {
             fontHeight: 2400,
             normalize: true

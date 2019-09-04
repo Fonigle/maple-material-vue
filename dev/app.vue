@@ -4,7 +4,7 @@
             <h4>Icon Button</h4>
             <div>
                 <mdc-icon-button>
-                    <i class="mpi-heart"></i>
+                    <i class="icon-heart"></i>
                 </mdc-icon-button>
             </div>
         </section>
