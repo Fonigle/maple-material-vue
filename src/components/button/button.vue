@@ -1,7 +1,7 @@
 <template>
     <button ref="button"
             :class="buttonClassName"
-            v-on="events">
+            v-on="$listeners">
         <i v-if="icon"
            :class="['mdc-button__icon', icon]"
            aria-hidden="true"></i>
@@ -104,19 +104,6 @@
             }
 
             return list.join(' ');
-        }
-
-        /**
-         * events list of component.
-         *
-         * 组件事件列表
-         * @readonly
-         * @memberof MdcButton
-         */
-        get events() {
-            return {
-                'click': () => { this.$emit('click') }
-            }
         }
     }
 </script>
