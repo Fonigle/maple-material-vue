@@ -71,12 +71,12 @@ export default function rippleFactory(ref: string, unbounded: boolean = false) {
                 }
             }
             else {
-                setTimeout(() => {
-                    if (this.rippleElement) {
-                        this.rippleInstance = new MDCRipple(this.rippleElement);
-                        this.rippleInstance.unbounded = true;
-                    }
-                }, 17);
+                // setTimeout(() => {
+                if (this.rippleElement) {
+                    this.rippleInstance = new MDCRipple(this.rippleElement);
+                    this.rippleInstance.unbounded = true;
+                }
+                // }, 17);
             }
         }
 
