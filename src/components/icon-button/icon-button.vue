@@ -28,9 +28,7 @@
          * @type {string}
          * @memberof MdcIconButton
          */
-        @Prop({
-            type: String
-        })
+        @Prop()
         readonly icon?: string
     }
 

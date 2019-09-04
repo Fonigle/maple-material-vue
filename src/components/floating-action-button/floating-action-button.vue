@@ -65,9 +65,7 @@
          * @type {string}
          * @memberof MdcFab
          */
-        @Prop({
-            type: String,
-        })
+        @Prop()
         readonly icon!: string;
 
         /**
@@ -77,9 +75,7 @@
          * @type {string}
          * @memberof MdcFab
          */
-        @Prop({
-            type: String,
-        })
+        @Prop()
         readonly trailingIcon!: string;
 
         /**
@@ -89,9 +85,7 @@
          * @type {string}
          * @memberof MdcFab
          */
-        @Prop({
-            type: String
-        })
+        @Prop()
         readonly label?: string;
 
         /**

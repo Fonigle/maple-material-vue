@@ -37,7 +37,7 @@
          * @type {string}
          * @memberof MpIconButtonToggle
          */
-        @Prop({ type: String })
+        @Prop()
         iconOn?: string;
 
         /**
@@ -47,7 +47,7 @@
          * @type {string}
          * @memberof MpIconButtonToggle
          */
-        @Prop({ type: String })
+        @Prop()
         iconOff?: string;
 
         /**
