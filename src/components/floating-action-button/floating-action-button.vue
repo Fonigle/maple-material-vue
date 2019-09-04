@@ -113,21 +113,13 @@
          * @memberof MdcFab
          */
         get fabClassName() {
-            const list = ['mdc-fab'];
+            const statics = ['mdc-fab'];
 
-            if (this.mini) {
-                list.push('mdc-fab--mini');
-            }
+            const dynamics = ['mini', 'extended', 'exited'].map(prop => {
+                return this[prop] ? `mdc-fab--${prop}` : undefined;
+            })
 
-            if (this.extended) {
-                list.push('mdc-fab--extended');
-            }
-
-            if (this.exited) {
-                list.push('mdc-fab--exited');
-            }
-
-            return list.join(' ');
+            return [...statics, ...dynamics]
         }
     }
 

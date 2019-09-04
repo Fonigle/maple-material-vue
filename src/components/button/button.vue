@@ -65,7 +65,6 @@
         })
         readonly dense?: boolean;
 
-
         /**
          * icon display before label text.
          *
@@ -95,6 +94,7 @@
          */
         get buttonClassName() {
             const list = ['mdc-button'];
+
             if (this.type) {
                 list.push(`mdc-button--${this.type}`);
             }
