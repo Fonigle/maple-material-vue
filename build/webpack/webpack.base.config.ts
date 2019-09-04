@@ -77,19 +77,21 @@ module.exports = {
                     loader: "sass-loader",
                     options: {
                         sourceMap: !isProduction,
-                        importer: function (url: string) {
-                            if (url.indexOf('@material') === 0) {
-                                const filePath = url.split('@material')[1];
-                                const nodeModulePath = './node_modules/@material/' + filePath;
-                                return { file: require('path').resolve(nodeModulePath) };
-                            }
+                        sassOptions: {
+                            importer: function (url: string) {
+                                if (url.indexOf('@material') === 0) {
+                                    const filePath = url.split('@material')[1];
+                                    const nodeModulePath = './node_modules/@material/' + filePath;
+                                    return { file: require('path').resolve(nodeModulePath) };
+                                }
 
-                            if (url.indexOf('material-components-web') === 0) {
-                                const nodeModulePath = './node_modules/material-components-web/material-components-web';
-                                return { file: require('path').resolve(nodeModulePath) };
-                            }
+                                if (url.indexOf('material-components-web') === 0) {
+                                    const nodeModulePath = './node_modules/material-components-web/material-components-web';
+                                    return { file: require('path').resolve(nodeModulePath) };
+                                }
 
-                            return { file: url };
+                                return { file: url };
+                            }
                         }
                     }
                 },
